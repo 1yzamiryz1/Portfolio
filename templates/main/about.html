@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    About
+{% endblock %}
+{% block content %}
+    <!-- About Start -->
+    <div class="container-fluid py-5" id="about">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">About</h1>
+                <h1 class="position-absolute text-uppercase text-primary">About Me</h1>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-lg-5 pb-4 pb-lg-0">
+                    <img class="img-fluid rounded w-100" src="{% static 'img/about.jpg' %}" alt="Me">
+                </div>
+                <div class="col-lg-7">
+                    <h3 class="mb-4">Software Engineer | Backend Developer</h3>
+                    <p>Hello! I am a passionate and curious backend developer with expertise in Django and Python. I am
+                        a naturally creative individual with a knack for generating ideas at lightning speed. Being a
+                        fast learner, I am constantly exploring new technologies and refining my skills to stay on top
+                        of the latest industry trends. My love for technology drives me to delve into various coding
+                        projects and challenges. I pride myself on being a self-study enthusiast, as it allows me to
+                        acquire new knowledge and skills independently.</p>
+                    <div class="row mb-3">
+                        <div class="col-sm-6 py-2"><h6>Name: <span class="text-secondary">Amirhossein YazdanPanah</span>
+                        </h6></div>
+                        <div class="col-sm-6 py-2"><h6>Birthday: <span class="text-secondary">9 May 1999</span></h6>
+                        </div>
+                        <div class="col-sm-6 py-2"><h6>Degree: <span class="text-secondary">Associate’s degree</span>
+                        </h6></div>
+                        <div class="col-sm-6 py-2"><h6>Experience: <span class="text-secondary">1 Year</span></h6>
+                        </div>
+                        <div class="col-sm-6 py-2"><h6>Telegram ID: <a href="https://www.t.me/Amirhosseinyz1"
+                                                                       class="text-secondary">Amirhosseinyz1</a></h6>
+                        </div>
+                        <div class="col-sm-6 py-2"><h6>Email: <a href="mailto:1yzamiryz1@gmail.com?"
+                                                                 class="text-secondary">1yzamiryz1@gmail.com</a>
+                        </h6>
+                        </div>
+                        <div class="col-sm-6 py-2"><h6>Address: <span
+                                class="text-secondary">Tehran & Shiraz</span></h6></div>
+                        <div class="col-sm-6 py-2"><h6>Freelance: <span class="text-secondary">Available</span></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+    <!-- Portfolio Start -->
+    <div class="container-fluid pt-5 pb-3" id="portfolio" style="margin-bottom: 50px;">
+        <div class="container">
+            <div class="position-relative d-flex align-items-center justify-content-center">
+                <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">
+                    Certificate</h1>
+                <h1 class="position-absolute text-uppercase text-primary">My Certificates</h1>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center mb-2">
+                    <ul class="list-inline mb-4" id="portfolio-flters">
+                        <li class="btn btn-sm btn-outline-primary m-1 active" data-filter="*">All</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".first">Python</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".second">Django</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".third">Data</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".forth">Web</li>
+                        <li class="btn btn-sm btn-outline-primary m-1" data-filter=".fifth">Other</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row portfolio-container">
+                {% for certificate in certificates %}
+                    {% if certificate.name == 'python' %}
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item first">
+                            <div class="position-relative overflow-hidden mb-2">
+                                <img class="img-fluid rounded w-100" src="{{ certificate.image.url }}" alt="Python">
+                                <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                                    <a href="{{ certificate.original_image.url }}" data-lightbox="portfolio">
+                                        <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif certificate.name == 'django' %}
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item second">
+                            <div class="position-relative overflow-hidden mb-2">
+                                <img class="img-fluid rounded w-100" src="{{ certificate.image.url }}" alt="Django">
+                                <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                                    <a href="{{ certificate.original_image.url }}" data-lightbox="portfolio">
+                                        <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif certificate.name == 'data' %}
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item third">
+                            <div class="position-relative overflow-hidden mb-2">
+                                <img class="img-fluid rounded w-100" src="{{ certificate.image.url }}" alt="Data">
+                                <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                                    <a href="{{ certificate.original_image.url }}" data-lightbox="portfolio">
+                                        <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div> 
+                    {% elif certificate.name == 'web' %}
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item forth">
+                            <div class="position-relative overflow-hidden mb-2">
+                                <img class="img-fluid rounded w-100" src="{{ certificate.image.url }}" alt="Web">
+                                <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                                    <a href="{{ certificate.original_image.url }}" data-lightbox="portfolio">
+                                        <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% elif certificate.name == 'other' %}
+                        <div class="col-lg-4 col-md-6 mb-4 portfolio-item fifth">
+                            <div class="position-relative overflow-hidden mb-2">
+                                <img class="img-fluid rounded w-100" src="{{ certificate.image.url }}" alt="Other">
+                                <div class="portfolio-btn bg-primary d-flex align-items-center justify-content-center">
+                                    <a href="{{ certificate.original_image.url }}" data-lightbox="portfolio">
+                                        <i class="fa fa-plus text-white" style="font-size: 60px;"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>    
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- Portfolio End -->
+{% endblock %}

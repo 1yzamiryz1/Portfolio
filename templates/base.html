@@ -1,0 +1,191 @@
+{% load static %}
+{% load compress %}
+<!DOCTYPE html>
+<html lang="en" itemscope="" itemtype="https://schema.org/None" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta name="description"
+          content="Amirhossein Yazdanpanah Personal Website a Portfolio website with a blog">
+    <meta name="keywords"
+          content="python, django, 1amiryz1, amirhosseinyazdanpanah, portfolio, personal, blog, 1yzamiryz1,amirhossein, yazdanpanah, software, engineer, backend, developer">
+    <meta property="og:title" content="Amirhossein Yazdanpanah Software Engineer | Backend Developer">
+    <meta property="og:url" content="https://1amiryz1.ir/">
+    <meta property="og:description"
+          content="Amirhossein Yazdanpanah Personal Website a Portfolio website with a blog">
+    <meta property="og:image" content="https://1amiryz1.ir/static/img/profile.jpg">
+    <meta property="og:image:secure_url" content="https://1amiryz1.ir/static/img/profile.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="1amiryz1">
+    <meta property="og:locale" content="fa_IR">
+    <meta name="twitter:card" content="https://1amiryz1.ir/static/img/profile.jpg">
+    <meta name="twitter:domain" content="1amiryz1.ir">
+    <meta name="twitter:title" content="Amirhossein Yazdanpanah Software Engineer | Backend Developer">
+    <meta name="twitter:url" content="https://1amiryz1.ir/">
+    <meta name="twitter:description"
+          content="Amirhossein Yazdanpanah Personal Website a Portfolio website with a blog">
+    <meta name="twitter:image" content="https://1amiryz1.ir/static/img/profile.jpg">
+    <meta itemprop="name" content="Amirhossein Yazdanpanah Software Engineer | Backend Developer">
+    <meta itemprop="url" content="https://1amiryz1.ir/">
+    <meta itemprop="description"
+          content="Amirhossein Yazdanpanah Personal Website a Portfolio website with a blog">
+    <meta itemprop="image" content="https://1amiryz1.ir/static/img/profile.jpg">
+
+
+    <title>{% block title %} {% endblock %}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- Google Web Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/android-chrome-512x512' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/android-chrome-192x192' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'img/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'img/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'img/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'img/site.webmanifest' %}">
+    {% compress css %}
+
+        <link rel="stylesheet" href="{% static 'css/search.css' %}">
+        <link rel="stylesheet" href="{% static 'css/comments.css' %}">
+
+
+        <!-- Libraries Stylesheet -->
+        <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    {% endcompress %}
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="51">
+<!-- Navbar Start -->
+<nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
+    <a title="main" href="{% url 'main:index_view' %}" class="navbar-brand ml-lg-3">
+        <h1 class="m-0 display-5"><span class="text-primary">Am</span>ir</h1>
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
+        <div class="navbar-nav m-auto py-0">
+            {% if request.get_full_path == '/' %}
+                <a title='main' href="{% url 'main:index_view' %}" class="nav-item nav-link active">Home</a>
+                <a title="about" href="{% url 'main:about' %}" class="nav-item nav-link">About</a>
+                <a title="quality" href="#qualification" class="nav-item nav-link">Quality</a>
+                <a title="skill" href="#skill" class="nav-item nav-link">Skill</a>
+                <a title="service" href="#service" class="nav-item nav-link">Service</a>
+                <a title="portfolio" href="#portfolio" class="nav-item nav-link">Portfolio</a>
+                <a title="blog" href="{% url 'blog:blog_view' %}" class="nav-item nav-link">Blog</a>
+                <a title="contact" href="{% url 'main:contact' %}" class="nav-item nav-link">Contact</a>
+            {% else %}
+                <a title="main" href="{% url 'main:index_view' %}" class="nav-item nav-link active">Home</a>
+                <a title="about" href="{% url 'main:about' %}" class="nav-item nav-link">About</a>
+                <a title="blog" href="{% url 'blog:blog_view' %}" class="nav-item nav-link">Blog</a>
+                <a title="contact" href="{% url 'main:contact' %}" class="nav-item nav-link">Contact</a>
+            {% endif %}
+            {% if request.user.is_authenticated %}
+
+                <a title="user" href="#" class="nav-item nav-link">Logged in as {{ request.user.username }}</a>
+
+
+                <a title="logout" href="{% url 'accounts:logout' %}" class="nav-item nav-link">Logout</a>
+
+            {% else %}
+
+                <a title="login" href="{% url 'accounts:login' %}" class="nav-item nav-link">Login</a>
+
+
+                <a title="signup" href="{% url 'accounts:signup' %}" class="nav-item nav-link">SignUp</a>
+
+            {% endif %}
+        </div>
+    </div>
+</nav>
+<!-- Navbar End -->
+{% include 'pop-up.html' %}
+<!-- Header Start -->
+<div class="container-fluid bg-primary d-flex align-items-center mb-5 py-5" id="home" style="min-height: 100vh;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 px-5 pl-lg-0 pb-5 pb-lg-0">
+                <img class="img-fluid w-100 rounded-circle shadow-sm" src="{% static 'img/profile.jpg' %}" alt="Me">
+            </div>
+            <div class="col-lg-7 text-center text-lg-left">
+                <h3 class="text-white font-weight-normal mb-3">I'm</h3>
+                <h1 class="display-3 text-uppercase text-primary mb-2" style="-webkit-text-stroke: 2px #ffffff;">
+                    AmirHossein<br>YazdanPanah</h1>
+                <h1 class="typed-text-output d-inline font-weight-lighter text-white"></h1>
+                <div class="typed-text d-none">Web Designer, Web Developer, Back End Developer, Apps Designer, Apps
+                    Developer
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+{% block content %}
+
+{% endblock %}
+<!-- Footer Start -->
+<div class="container-fluid bg-primary text-white mt-5 py-5 px-sm-3 px-md-5">
+    <div class="container text-center py-5">
+        <div class="d-flex justify-content-center mb-4">
+            <a title="github" class="btn btn-light btn-social mr-2" href="https://github.com/1yzamiryz1"><i
+                    class="fab fa-github"></i></a>
+            <a title="telegram" class="btn btn-light btn-social mr-2" href="https://www.t.me/Amirhosseinyz1"><i
+                    class="fab fa-telegram"></i></a>
+            <a title="linkedin" class="btn btn-light btn-social mr-2" href="https://www.linkedin.com/in/1amiryz1"><i
+                    class="fab fa-linkedin-in"></i></a>
+            <a title="instagram" class="btn btn-light btn-social" href="https://www.instagram.com/1amiryz1"><i
+                    class="fab fa-instagram"></i></a>
+        </div>
+        <p style="display: none;" class="m-0">&copy; <a title="domain" class="text-white font-weight-bold" href="#">Domain
+            Name</a>.
+            All Rights Reserved.
+            Designed by <a title="html" class="text-white font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+        </p>
+        <p class="m-0"><a title="1amiryz1.ir" class="text-white font-weight-bold" href="#">1amiryz1.ir</a>. All Rights
+            Reserved.
+            Designed by <a title="1amiryz1" class="text-white font-weight-bold" href="#">1amiryz1</a></p>
+    </div>
+</div>
+<!-- Footer End -->
+
+<!-- Scroll to Bottom -->
+<i class="fa fa-2x fa-angle-down text-white scroll-to-bottom"></i>
+
+<!-- Back to Top -->
+<a title="top" href="#" class="btn btn-outline-dark px-0 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+</script>
+{% compress js %}
+    <script src="{% static 'lib/typed/typed.min.js' %}"></script>
+
+    <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+
+    <script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+
+    <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+    <script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+
+    <script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
+{% endcompress %}
+</body>
+
+</html>

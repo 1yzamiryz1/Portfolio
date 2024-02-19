@@ -1,0 +1,29 @@
+{% load static %}
+<!-- Blog Start -->
+<div class="container-fluid pt-5" id="blog">
+    <div class="container">
+        <div class="position-relative d-flex align-items-center justify-content-center">
+            <h1 class="display-1 text-uppercase text-white" style="-webkit-text-stroke: 1px #dee2e6;">Blog</h1>
+            <h1 class="position-absolute text-uppercase text-primary">Latest Posts</h1>
+        </div>
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-lg-4 mb-5">
+                    <div class="position-relative mb-4">
+                        <img class="img-fluid rounded w-100" src="{{ post.image.url }}" alt=""/>
+                        <div class="blog-date">
+                            <h4 class="font-weight-bold mb-n1">{{ post.published_date|date:"d" }}</h4>
+                            <small class="text-white text-uppercase">{{ post.published_date|date:"M" }}</small>
+                        </div>
+                    </div>
+                    <h4 class="font-weight-medium mb-4">{{ post.title }}</h4>
+                    <h5 class="font-weight-medium mb-4">{{ post.author.username }}</h5>
+                    <h6 class="font-weight-medium mb-4">{{ post.content|truncatewords:10|safe }}</h6>
+                    <a title="blog-single" class="btn btn-sm btn-outline-primary py-2" href="{% url 'blog:single' pid=post.id %}">Read
+                        More</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!-- Blog End -->

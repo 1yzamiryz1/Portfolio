@@ -1,0 +1,13 @@
+{% load static %}
+<div class="single-sidebar-widget">
+    <form action="{% url 'blog:search' %}" method="get">
+        <div class="searchBox">
+            <input class="searchInput" type="text" name="s" placeholder="Search Posts">
+            <button type="submit" class="searchButton">
+                <i class="material-icons">
+                    SEARCH
+                </i>
+            </button>
+        </div>
+    </form>
+</div>
